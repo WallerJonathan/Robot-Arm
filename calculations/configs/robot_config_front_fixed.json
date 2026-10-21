@@ -1,0 +1,904 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "result_label": "ILLUSTRATIVE: requested front box, fixed world-facing cylinder side",
+    "supplied_actual": [
+      "robot.joints: a_m, d_m, alpha_rad",
+      "robot.reference_q_rad"
+    ],
+    "interpretation_assumptions": [
+      "Standard DH convention",
+      "Six revolute joints",
+      "Zero offsets are zero; supplied theta values are a reference pose",
+      "Full 360-degree motor rotation; continuous joints are unwrapped for path continuity, without cable constraints",
+      "Shoulder 60-degree downward exclusion and capsule envelopes are configurable geometry assumptions, not measured limits",
+      "Front box: x=0..0.4 m, y=-0.2..0.2 m, z=0.05..0.45 m; fixed-side testing and per-placement facing cases both evaluated"
+    ],
+    "demonstration_values_to_replace": [
+      "joint limits and zero offsets",
+      "55 g joint assemblies and 70 g links, component allocation and all centers of mass",
+      "tool mass, offset, and pointing axis",
+      "base and table placement and collision geometry",
+      "cylinder dimensions and reference placement",
+      "horizontal reference pose",
+      "self-collision capsule dimensions, clearance, excluded attachment pairs, and shoulder forbidden sector"
+    ],
+    "mass_inventory_note": "Six 55 g joint/motor assemblies and six 70 g link assemblies. Brackets and wrist hardware are assumed included in those assemblies, not added again. The separate 12 g drawing tool is filler. No extra payload. Verify against an actual weighed inventory."
+  },
+  "robot": {
+    "convention": "standard_dh",
+    "joints": [
+      {
+        "name": "joint_1",
+        "type": "revolute",
+        "a_m": 0.0,
+        "d_m": 0.1519,
+        "alpha_rad": 1.570796327,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          0,
+          6.283185307179586
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": true,
+        "limit_source": "demonstration: one periodic 360-degree angular interval"
+      },
+      {
+        "name": "joint_2",
+        "type": "revolute",
+        "a_m": -0.2436,
+        "d_m": 0.0,
+        "alpha_rad": 0.0,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          2.0943951023931953,
+          7.3303828583761845
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": false,
+        "limit_source": "demonstration: exclude the 60-degree downward sector [60,120] deg; negative a2 makes q2=90 deg point toward the base"
+      },
+      {
+        "name": "joint_3",
+        "type": "revolute",
+        "a_m": -0.2132,
+        "d_m": 0.0,
+        "alpha_rad": 0.0,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          0,
+          6.283185307179586
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": true,
+        "limit_source": "demonstration: one periodic 360-degree angular interval"
+      },
+      {
+        "name": "joint_4",
+        "type": "revolute",
+        "a_m": 0.0,
+        "d_m": 0.1311,
+        "alpha_rad": 1.570796327,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          0,
+          6.283185307179586
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": true,
+        "limit_source": "demonstration: one periodic 360-degree angular interval"
+      },
+      {
+        "name": "joint_5",
+        "type": "revolute",
+        "a_m": 0.0,
+        "d_m": 0.0854,
+        "alpha_rad": -1.570796327,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          0,
+          6.283185307179586
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": true,
+        "limit_source": "demonstration: one periodic 360-degree angular interval"
+      },
+      {
+        "name": "joint_6",
+        "type": "revolute",
+        "a_m": 0.0,
+        "d_m": 0.0921,
+        "alpha_rad": 0.0,
+        "zero_offset_rad": 0.0,
+        "limits_rad": [
+          0,
+          6.283185307179586
+        ],
+        "motor_rotation_capability_deg": 360,
+        "continuous": true,
+        "limit_source": "demonstration: one periodic 360-degree angular interval"
+      }
+    ],
+    "reference_q_rad": [
+      5.270894341,
+      3.316125579,
+      1.029744259,
+      3.473205211,
+      2.094395102,
+      1.570796327
+    ],
+    "world_from_base": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "gravity_m_s2": [
+      0,
+      0,
+      -9.80665
+    ],
+    "flange_from_tip": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0.04
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "tip_pointing_axis": [
+      0,
+      0,
+      1
+    ],
+    "continuous_joint_torque_limits_Nm": null,
+    "horizontal_reference": {
+      "q_rad": [
+        0,
+        6.283185307179586,
+        0,
+        0,
+        0,
+        0
+      ],
+      "description": "Illustrative zero-angle reference: main signed-a links extend horizontally; wrist offsets remain transformed, not added as horizontal lengths"
+    },
+    "visualization_q_rad": [
+      7.082366136112321,
+      4.304754474354735,
+      3.6949705668460493,
+      1.4250529198624875,
+      0.7716154978537236,
+      1.570796327
+    ],
+    "visualization_q_source": "Illustrative drawing pose solved at the central normal of a cylinder centered at [0.35,0,0.25] m; original supplied reference_q is preserved for torque."
+  },
+  "masses": [
+    {
+      "name": "joint_1_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 0,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_1_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 1,
+      "com_local_m": [
+        -0.0,
+        -0.07595,
+        1.5577605395739403e-11
+      ],
+      "affected_joints": [
+        0
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "joint_2_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 1,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [
+        0
+      ],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_2_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 2,
+      "com_local_m": [
+        0.1218,
+        -0.0,
+        -0.0
+      ],
+      "affected_joints": [
+        0,
+        1
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "joint_3_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 2,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [
+        0,
+        1
+      ],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_3_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 3,
+      "com_local_m": [
+        0.1066,
+        -0.0,
+        -0.0
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "joint_4_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 3,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2
+      ],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_4_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 4,
+      "com_local_m": [
+        -0.0,
+        -0.06555,
+        1.3444529739179956e-11
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "joint_5_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 4,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_5_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 5,
+      "com_local_m": [
+        -0.0,
+        0.0427,
+        8.75791639760464e-12
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "joint_6_assembly",
+      "mass_kg": 0.055,
+      "frame_index": 5,
+      "com_local_m": [
+        0,
+        0,
+        0
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source": "demonstration: upstream joint housing at preceding frame origin"
+    },
+    {
+      "name": "link_6_assembly",
+      "mass_kg": 0.07,
+      "frame_index": 6,
+      "com_local_m": [
+        -0.0,
+        -0.0,
+        -0.04605
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source": "demonstration: midpoint between adjacent DH origins; includes assigned bracket/wrist hardware"
+    },
+    {
+      "name": "drawing_tool",
+      "mass_kg": 0.012,
+      "frame_index": 6,
+      "com_local_m": [
+        0,
+        0,
+        0.02
+      ],
+      "affected_joints": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source": "demonstration: separate drawing tool; payload 0 kg"
+    }
+  ],
+  "task": {
+    "cylinder": {
+      "radius_m": 0.035,
+      "drawing_height_m": 0.1,
+      "reference_center_world_m": [
+        0.35,
+        0,
+        0.3
+      ],
+      "side_direction_mode": "toward_base_from_reference_then_fixed",
+      "free_tool_roll": true
+    },
+    "collision_checking": true,
+    "drawing_contact_force_enabled": false,
+    "table": {
+      "top_z_m": 0.0,
+      "bounds_xy_m": [
+        [
+          -0.8,
+          0.8
+        ],
+        [
+          -0.8,
+          0.8
+        ]
+      ],
+      "note": "Visualization reference only; table collision is not checked"
+    },
+    "collision_geometry": {
+      "links": null,
+      "obstacles": [],
+      "clearance_m": 0.005,
+      "note": "Not implemented; supply actual shapes before interpreting physical feasibility"
+    },
+    "cube": {
+      "dimensions_m": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "margin_m": 0.005
+    },
+    "self_collision": {
+      "enabled": true,
+      "clearance_m": 0.002,
+      "capsules": [
+        {
+          "name": "base_pedestal",
+          "frame_index": 0,
+          "body_index": 0,
+          "start_local_m": [
+            0,
+            0,
+            0
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.1
+          ],
+          "radius_m": 0.025
+        },
+        {
+          "name": "link_1",
+          "frame_index": 1,
+          "body_index": 1,
+          "start_local_m": [
+            0.0,
+            -0.1519,
+            3.1155210791478806e-11
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_1_housing",
+          "frame_index": 0,
+          "body_index": 0,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "link_2",
+          "frame_index": 2,
+          "body_index": 2,
+          "start_local_m": [
+            0.2436,
+            0.0,
+            0.0
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_2_housing",
+          "frame_index": 1,
+          "body_index": 1,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "link_3",
+          "frame_index": 3,
+          "body_index": 3,
+          "start_local_m": [
+            0.2132,
+            0.0,
+            0.0
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_3_housing",
+          "frame_index": 2,
+          "body_index": 2,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "link_4",
+          "frame_index": 4,
+          "body_index": 4,
+          "start_local_m": [
+            0.0,
+            -0.1311,
+            2.6889059478359912e-11
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_4_housing",
+          "frame_index": 3,
+          "body_index": 3,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "link_5",
+          "frame_index": 5,
+          "body_index": 5,
+          "start_local_m": [
+            0.0,
+            0.0854,
+            1.751583279520928e-11
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_5_housing",
+          "frame_index": 4,
+          "body_index": 4,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "link_6",
+          "frame_index": 6,
+          "body_index": 6,
+          "start_local_m": [
+            0.0,
+            0.0,
+            -0.0921
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0
+          ],
+          "radius_m": 0.012
+        },
+        {
+          "name": "joint_6_housing",
+          "frame_index": 5,
+          "body_index": 5,
+          "start_local_m": [
+            0,
+            0,
+            -0.015
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.015
+          ],
+          "radius_m": 0.018
+        },
+        {
+          "name": "drawing_tool",
+          "frame_index": 6,
+          "body_index": 6,
+          "start_local_m": [
+            0,
+            0,
+            0
+          ],
+          "end_local_m": [
+            0,
+            0,
+            0.04
+          ],
+          "radius_m": 0.004
+        }
+      ],
+      "excluded_pairs": [
+        [
+          "base_pedestal",
+          "link_1"
+        ],
+        [
+          "base_pedestal",
+          "joint_1_housing"
+        ],
+        [
+          "base_pedestal",
+          "joint_2_housing"
+        ],
+        [
+          "link_1",
+          "joint_1_housing"
+        ],
+        [
+          "link_1",
+          "link_2"
+        ],
+        [
+          "link_1",
+          "joint_2_housing"
+        ],
+        [
+          "link_1",
+          "joint_3_housing"
+        ],
+        [
+          "joint_1_housing",
+          "joint_2_housing"
+        ],
+        [
+          "link_2",
+          "joint_2_housing"
+        ],
+        [
+          "link_2",
+          "link_3"
+        ],
+        [
+          "link_2",
+          "joint_3_housing"
+        ],
+        [
+          "link_2",
+          "joint_4_housing"
+        ],
+        [
+          "joint_2_housing",
+          "joint_3_housing"
+        ],
+        [
+          "link_3",
+          "joint_3_housing"
+        ],
+        [
+          "link_3",
+          "link_4"
+        ],
+        [
+          "link_3",
+          "joint_4_housing"
+        ],
+        [
+          "link_3",
+          "joint_5_housing"
+        ],
+        [
+          "joint_3_housing",
+          "joint_4_housing"
+        ],
+        [
+          "link_4",
+          "joint_4_housing"
+        ],
+        [
+          "link_4",
+          "link_5"
+        ],
+        [
+          "link_4",
+          "joint_5_housing"
+        ],
+        [
+          "link_4",
+          "joint_6_housing"
+        ],
+        [
+          "joint_4_housing",
+          "joint_5_housing"
+        ],
+        [
+          "link_5",
+          "joint_5_housing"
+        ],
+        [
+          "link_5",
+          "link_6"
+        ],
+        [
+          "link_5",
+          "joint_6_housing"
+        ],
+        [
+          "link_5",
+          "drawing_tool"
+        ],
+        [
+          "joint_5_housing",
+          "joint_6_housing"
+        ],
+        [
+          "link_6",
+          "joint_6_housing"
+        ],
+        [
+          "link_6",
+          "drawing_tool"
+        ],
+        [
+          "joint_6_housing",
+          "drawing_tool"
+        ]
+      ],
+      "source": "ILLUSTRATIVE capsule envelopes: 12 mm link radii, 18 mm joint housing radii, 25 mm base radius, 4 mm tool radius. Adjacent connected bodies explicitly excluded. Replace with measured dimensions or CAD.",
+      "scope": "Self-collision screening only. Table, cylinder body, obstacles, and swept motion between samples are unchecked."
+    },
+    "front_region": {
+      "enabled": true,
+      "lower_m": [
+        0,
+        -0.2,
+        0.05
+      ],
+      "upper_m": [
+        0.4,
+        0.2,
+        0.45
+      ],
+      "facing_direction_world": [
+        1,
+        0,
+        0
+      ],
+      "description": "Requested 0.4 m cube directly in front of the base; y spans +/-0.2 m. Vertical placement chosen from a recorded height comparison.",
+      "selection_note": "z=0.05..0.45 m ties the best tested coverage and keeps required drawing-height midpoint above the illustrative table."
+    }
+  },
+  "numerics": {
+    "ik": {
+      "position_tolerance_m": 0.001,
+      "axis_tolerance_rad": 0.017453292519943295,
+      "position_residual_scale_m": 0.2,
+      "initial_attempts": 3,
+      "retry_attempts": 6,
+      "max_evaluations": 65,
+      "posture_regularization_weight": 0.001,
+      "backend": "ik_geo",
+      "free_roll_samples": 16
+    },
+    "torque": {
+      "seed": 18500,
+      "samples": 256,
+      "optimization_starts": 4,
+      "max_iterations": 100
+    },
+    "workspace": {
+      "seed": 18500,
+      "bounds_m": [
+        [
+          -0.005,
+          0.405
+        ],
+        [
+          -0.205,
+          0.205
+        ],
+        [
+          0.045,
+          0.455
+        ]
+      ],
+      "spacing_m": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "surface_phi_samples": 9,
+      "surface_height_samples": 3,
+      "boundary_refinement_levels": 1,
+      "max_refined_cells_per_level": 6,
+      "continuity": {
+        "enabled": true,
+        "horizontal_strokes": 3,
+        "vertical_strokes": 3,
+        "max_surface_step_m": 0.04,
+        "max_normal_step_rad": 0.20943951023931956,
+        "max_joint_step_rad": 0.8,
+        "extra_seed_attempts": 4,
+        "joint_interpolation_substeps": 3
+      },
+      "cube_verification_spacing_m": 0.1,
+      "max_cube_candidates_to_verify": 4
+    }
+  }
+}

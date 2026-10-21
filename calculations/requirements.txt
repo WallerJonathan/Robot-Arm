@@ -1,0 +1,5 @@
+numpy
+scipy
+matplotlib
+ik-geo==1.0.3
+mujoco==3.3.7
