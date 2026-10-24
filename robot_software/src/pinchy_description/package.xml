@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>pinchy_description</name>
+  <version>0.0.1</version>
+  <description>SO-101 reference description for the Leonardo Da Pinchy writing arm.</description>
+  <!-- Replace this team contact with the designated maintainer before release. -->
+  <maintainer email="maintainer@example.com">Leonardo Da Pinchy Team B2</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
